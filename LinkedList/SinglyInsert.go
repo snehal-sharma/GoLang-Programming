@@ -9,11 +9,10 @@ type LinkedList struct {
 	next *LinkedList
 }
 
-func insertAtStart(data int, head *LinkedList) *LinkedList {
-	newNode := &LinkedList{data, nil}
+func insertAtStart(data int, head *LinkedList) {
+	newNode := LinkedList{data, nil}
 	newNode.next = head
-	head = newNode
-	return head
+	head = &newNode
 }
 
 func insertAtEnd(data int, head *LinkedList) {
@@ -49,7 +48,7 @@ func PrintList(head *LinkedList) {
 func main() {
 	head := &LinkedList{3, nil}
 	PrintList(head)
-	head = insertAtStart(45, head)
+	insertAtStart(45, head)
 	PrintList(head)
 	insertAtEnd(23, head)
 	PrintList(head)
