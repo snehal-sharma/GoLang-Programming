@@ -27,7 +27,7 @@ func insertInTheMiddle(data, position int, head *LinkedList) {
 	newNode := &LinkedList{data, nil}
 	current := head
 	i := 1
-	for current != nil && i < position {
+	for current.next != nil && i < position {
 		i++
 		current = current.next
 	}
