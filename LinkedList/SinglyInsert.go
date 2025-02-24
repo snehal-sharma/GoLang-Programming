@@ -26,13 +26,15 @@ func insertAtEnd(data int, head *LinkedList) {
 func insertInTheMiddle(data, position int, head *LinkedList) {
 	newNode := &LinkedList{data, nil}
 	current := head
-	i := 1
+	prev := current
+	i := 0
 	for current.next != nil && i < position {
 		i++
+		prev = current
 		current = current.next
 	}
-	newNode.next = current.next
-	current.next = newNode
+	prev.next = newNode
+	newNode.next = current
 }
 
 func PrintList(head *LinkedList) {
