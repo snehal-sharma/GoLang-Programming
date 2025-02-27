@@ -1,41 +1,22 @@
-//Re-attempt
+/*
+Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
 
-type Vector struct{
-    index1, index2 int
-    visited bool
-}
+Input: nums = [1,2,3,1], k = 3
+Output: true
+
+Input: nums = [1,2,3,1,2,3], k = 2
+Output: false
+*/
+
 func containsNearbyDuplicate(nums []int, k int) bool {
-    if len(nums)==1{
-        return false
-    }
-    duplicate := make(map[int]Vector,len(nums))
+    duplicates:=make(map[int]int,len(nums))
     for i:=0;i<len(nums);i++{
-        fmt.Println(duplicate[nums[i]])
-        _,ok:=duplicate[nums[i]]
-        if !ok{
-            fmt.Println("Setting Default Values for",nums[i])
-            duplicate[nums[i]]=Vector{-1,-1,false}
-        }
-        val,_:=duplicate[nums[i]]
-        if val.index1!=-1{
-            if val.visited{
-                if val.index2-val.index1<=k{
-                    return true
-                }
-                duplicate[nums[i]]=Vector{val.index2,i,true}
-            }else{
-                duplicate[nums[i]]=Vector{val.index1,i,true}
-            }
+        value,ok:=duplicates[nums[i]]
+        if ok && i-value<=k{
+            return true
         }else{
-        duplicate[nums[i]]=Vector{i,-1,false}
+            duplicates[nums[i]]=i
         }
-        fmt.Printf("%+v\n",duplicate[nums[i]])
-    }
-    fmt.Println(duplicate)
-    for _,val := range duplicate{
-            if val.visited==true && val.index2-val.index1 <= k{
-                return true
-            }
     }
     return false
 }
