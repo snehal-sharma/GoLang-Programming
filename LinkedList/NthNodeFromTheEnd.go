@@ -20,31 +20,18 @@ func (list *LinkedList) insertAtStart(data int) {
 	list.head = newNode
 }
 
-func (list *LinkedList) FindNthNodeFromEndOfList(pos, len int) int {
-	i := 0
-	if pos > len {
-		fmt.Println("\nFewer Number of nodes in the list")
-		return -1
-	}
-	nodePos := len - pos
-	current := list.head
-	for current.next != nil && i < nodePos {
-		current = current.next
-		i++
-	}
-	return current.data
-}
-
-func (list *LinkedList) PrintList() int {
+func (list *LinkedList) PrintList() (int, map[int]*Node) {
 	count := 0
+	hashMap := make(map[int]*Node)
 	fmt.Println("\nPrinting List")
 	current := list.head
 	for current != nil {
+		hashMap[count] = current
 		fmt.Printf("\t %d", current.data)
 		current = current.next
 		count++
 	}
-	return count
+	return count, hashMap
 }
 
 func main() {
@@ -53,13 +40,14 @@ func main() {
 	for i := 0; i < 10; i++ {
 		myList.insertAtStart(rand.Intn(100))
 	}
-	length := myList.PrintList()
+	length, hashMap := myList.PrintList()
 	fmt.Printf("\nLength of List is %v", length)
 
 	pos := rand.Intn(10)
-	node := myList.FindNthNodeFromEndOfList(pos, length)
-	if node != -1 {
-		fmt.Printf("\n%vth Node from the End of the List is %v", pos, node)
+	nodePos := length - pos
+	node, ok := hashMap[nodePos]
+	if ok {
+		fmt.Printf("\n%vth Node from the End of the List is %v", pos, node.data)
 	}
 
 }
