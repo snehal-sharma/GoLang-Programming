@@ -5,30 +5,32 @@ import (
 	"math/rand"
 )
 
-type LinkedList struct {
+type Node struct {
 	data int
-	next *LinkedList
+	next *Node
 }
 
-func insertAtStart(data int, head *LinkedList) *LinkedList {
-	newNode := LinkedList{data, nil}
-	newNode.next = head
-	head = &newNode
-	return head
+type LinkedList struct {
+	head *Node
 }
 
-func DeleteFromStart(head *LinkedList) *LinkedList {
-	if head == nil {
+func (list *LinkedList) insertAtStart(data int) {
+	newNode := &Node{data, nil}
+	newNode.next = list.head
+	list.head = newNode
+}
+
+func (list *LinkedList) DeleteFromStart() {
+	if list.head == nil {
 		fmt.Println("Nothing to Delete")
 	} else {
-		head = head.next
+		list.head = list.head.next
 	}
-	return head
 
 }
 
-func DeleteAtTheEnd(head *LinkedList) {
-	current := head
+func (list *LinkedList) DeleteAtTheEnd() {
+	current := list.head
 	prev := current
 	for current.next != nil {
 		prev = current
@@ -38,8 +40,8 @@ func DeleteAtTheEnd(head *LinkedList) {
 
 }
 
-func DeleteInTheMiddle(pos int, head *LinkedList) {
-	current := head
+func (list *LinkedList) DeleteInTheMiddle(pos int) {
+	current := list.head
 	prev := current
 	i := 0
 	for current.next != nil && i < pos {
@@ -51,9 +53,9 @@ func DeleteInTheMiddle(pos int, head *LinkedList) {
 
 }
 
-func PrintList(head *LinkedList) {
+func (list *LinkedList) PrintList() {
 	fmt.Println("\nPrinting List")
-	current := head
+	current := list.head
 	for current != nil {
 		fmt.Printf("\t %d", current.data)
 		current = current.next
@@ -61,19 +63,19 @@ func PrintList(head *LinkedList) {
 }
 
 func main() {
-	//	var head *LinkedList
-	//	DeleteFromStart(head)
-	head := &LinkedList{10, nil}
-	PrintList(head)
-	for i := 0; i < 7; i++ {
-		head = insertAtStart(rand.Intn(100), head)
-	}
-	PrintList(head)
-	head = DeleteFromStart(head)
-	PrintList(head)
-	DeleteAtTheEnd(head)
-	PrintList(head)
-	DeleteInTheMiddle(3, head)
-	PrintList(head)
+	myList := LinkedList{}
 
+	for i := 0; i < 7; i++ {
+		myList.insertAtStart(rand.Intn(100))
+	}
+	myList.PrintList()
+
+	myList.DeleteFromStart()
+	myList.PrintList()
+
+	myList.DeleteAtTheEnd()
+	myList.PrintList()
+
+	myList.DeleteInTheMiddle(3)
+	myList.PrintList()
 }
