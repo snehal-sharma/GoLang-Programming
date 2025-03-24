@@ -12,6 +12,21 @@ func mergeAlternately(word1 string, word2 string) string {
         merged=append(merged,word2[i])
         }
     }
+    return string(merged)
+}
+
+func mergeAlternately2(word1 string, word2 string) string {
+    merged := ""
+    for i:=0;i<len(word1) || i<len(word2);i++{
+        str1,str2:="",""
+        if i<len(word1){
+            str1=string(word1[i])
+        }
+        if i<len(word2){
+            str2=string(word2[i])
+        }
+        merged+=str1+str2
+    }
     fmt.Println(string(merged))
     return string(merged)
 }
