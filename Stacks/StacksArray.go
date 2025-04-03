@@ -10,6 +10,10 @@ type Stack struct {
 	Capacity int
 }
 
+func (s *Stack) CreateStack() {
+	s.items = make([]int, 0, s.Capacity)
+}
+
 func (s *Stack) IsEmptyStack() bool {
 	if len(s.items) == 0 {
 		return true
@@ -48,6 +52,7 @@ func (s *Stack) Print() {
 
 func main() {
 	s := Stack{Capacity: 7}
+	s.CreateStack()
 	fmt.Println("Is Stack empty", s.IsEmptyStack())
 	for i := 0; i < 8; i++ {
 		s.Push(rand.Intn(100))
