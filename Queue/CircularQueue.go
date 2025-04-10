@@ -7,19 +7,19 @@ import (
 )
 
 type Queue struct {
-	Rear, Front, Data int
-	arr               []int
+	Rear, Front, Data, Capacity int
+	arr                         []int
 }
 
 func (myQueue *Queue) IsEmptyQueue() bool {
-	if myQueue.Rear == -1 {
+	if myQueue.Front == -1 {
 		return true
 	}
 	return false
 }
 
 func (myQueue *Queue) IsFullQueue() bool {
-	if myQueue.Front == cap(myQueue.arr) {
+	if myQueue.Front == myQueue.Capacity {
 		return true
 	}
 	return false
@@ -28,8 +28,11 @@ func (myQueue *Queue) IsFullQueue() bool {
 func (myQueue *Queue) EnQueue(data int) {
 	if !myQueue.IsFullQueue() {
 		myQueue.arr = append(myQueue.arr, data)
-		myQueue.Rear = 0
-		myQueue.Front = len(myQueue.arr)
+		if myQueue.Rear == -1 {
+			myQueue.Rear = 0
+			myQueue.Front = 0
+		}
+		myQueue.Front++
 	} else {
 		fmt.Println("Queue Overflow: Trying to Insert in a full Queue")
 	}
@@ -51,18 +54,30 @@ func (myQueue *Queue) DeQueue() {
 }
 
 func main() {
-	myQueue := Queue{Rear: -1, Front: -1}
-	myQueue.arr = make([]int, 0, 7)
+	myQueue := Queue{Rear: -1, Front: -1, Capacity: 7}
+	myQueue.arr = make([]int, 0, myQueue.Capacity)
 	fmt.Println(myQueue)
 	fmt.Println(myQueue.IsEmptyQueue())
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 4; i++ {
 		myQueue.EnQueue(rand.Intn(100))
 		fmt.Println("After EnQueue")
 		fmt.Println(myQueue)
 	}
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 2; i++ {
+		myQueue.DeQueue()
+		fmt.Println("After DeQueue")
+		fmt.Println(myQueue)
+	}
+
+	for i := 0; i < 4; i++ {
+		myQueue.EnQueue(rand.Intn(100))
+		fmt.Println("After EnQueue")
+		fmt.Println(myQueue)
+	}
+
+	for i := 0; i < 6; i++ {
 		myQueue.DeQueue()
 		fmt.Println("After DeQueue")
 		fmt.Println(myQueue)
