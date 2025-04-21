@@ -73,7 +73,6 @@ func FindElementNonRecursive(root *BinaryTreeNode, data int) int {
 	myQueue.EnQueue(root)
 	for !myQueue.IsEmptyQueue() {
 		temp := myQueue.DeQueue()
-		fmt.Println(myQueue)
 		if temp.Data == data {
 			return 1
 		}
