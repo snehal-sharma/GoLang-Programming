@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -39,12 +38,13 @@ func (myQueue *Queue) EnQueue(data int) {
 }
 
 func (myQueue *Queue) DeQueue() {
-	if myQueue.Rear == myQueue.Front {
-		myQueue.Rear = -1
-		myQueue.Front = -1
-	}
+
 	if !myQueue.IsEmptyQueue() {
 		myQueue.Rear++
+		if myQueue.Rear == myQueue.Front {
+			myQueue.Rear = -1
+			myQueue.Front = -1
+		}
 		myQueue.arr = myQueue.arr[1:]
 	} else {
 		fmt.Println("Queue Underflow:Deleting from an empty Queue")
