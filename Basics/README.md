@@ -82,3 +82,4 @@
   ```
 * You can declare a method on non-struct types, too.
 * You can only declare a method with a receiver whose type is defined in the same package as the method. You cannot declare a method with a receiver whose type is defined in another package.
+* https://go.dev/tour/methods/4
