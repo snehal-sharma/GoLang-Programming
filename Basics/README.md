@@ -83,3 +83,7 @@
 * You can declare a method on non-struct types, too.
 * You can only declare a method with a receiver whose type is defined in the same package as the method. You cannot declare a method with a receiver whose type is defined in another package.
 * https://go.dev/tour/methods/4
+* You can declare methods with pointer receivers. This means the receiver type has the literal syntax *T for some type T. Methods with pointer receivers can modify the value to which the receiver points. Since methods often need to modify their receiver, pointer receivers are more common than value receivers. Example : https://go.dev/tour/methods/4
+* Methods and pointer indirection
+  1. Calling with a value (type T): If you call a method with a pointer receiver on a value v of type T (e.g., v.Scale(2)), Go automatically takes the address of v and interprets the call as (&v).Scale(2). This implicit conversion requires that the variable v is addressable (e.g., a variable, not a map value or an interface value's data).
+    2. Calling with a pointer (&type): If you call the method with a pointer p of type *T (e.g., p.Scale(3)), it works as expected because the receiver type matches the variable type
