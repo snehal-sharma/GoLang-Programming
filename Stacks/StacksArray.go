@@ -36,6 +36,7 @@ func (s *Stack) Push(data int) {
 }
 
 func (s *Stack) Pop() {
+	fmt.Println("Popped Element : ", s.items[len(s.items)-1])
 	s.items = s.items[:len(s.items)-1]
 }
 
@@ -61,6 +62,8 @@ func main() {
 	s.Pop()
 	s.Print()
 	s.Pop()
+	s.Print()
+	s.Push(250)
 	s.Print()
 	fmt.Println("Peeking at the top element", s.Peek())
 }
