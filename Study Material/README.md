@@ -1,5 +1,6 @@
 # GoLang GoRoutines
 * https://medium.com/deep-golang/top-golang-interview-questions-related-to-goroutines-part-1-dff76c66b086
+* https://medium.com/deep-golang/top-golang-interview-questions-related-to-goroutines-part-2-fd3afa7e8268
 * https://gobyexample.com/waitgroups
 
 # GoLang SOLID Principles
