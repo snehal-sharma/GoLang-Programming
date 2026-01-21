@@ -10,3 +10,7 @@
 # GoLang Design Patterns
 * https://dev.to/truongpx396/common-design-patterns-in-golang-5789
 * https://refactoring.guru/design-patterns/go
+
+# GoLang Coding Repositories
+* https://github.com/TannerGabriel/learning-go
+* https://github.com/gongchengra/learning-go/tree/master/06.leetcode
