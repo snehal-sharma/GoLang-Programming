@@ -5,22 +5,28 @@ package main
 
 import "fmt"
 
-func main() {
+func BubbleSort(array []int) {
 	temp := 0
 	valuesSwapped := true
-	arrayN := []int{2, 3, 6, 8, 1, 7, 9, 4, 5}
-	fmt.Println("Original Array : ", arrayN)
-	for pass := len(arrayN) - 1; pass >= 0 && valuesSwapped; pass-- {
+	for pass := len(array) - 1; pass >= 0 && valuesSwapped; pass-- {
 		fmt.Println("Pass : ", pass)
 		valuesSwapped = false
 		for i := 0; i < pass; i++ {
-			if arrayN[i] > arrayN[i+1] {
-				temp = arrayN[i]
-				arrayN[i] = arrayN[i+1]
-				arrayN[i+1] = temp
+			if array[i] > array[i+1] {
+				temp = array[i]
+				array[i] = array[i+1]
+				array[i+1] = temp
 				valuesSwapped = true
 			}
 		}
-		fmt.Println(arrayN, valuesSwapped)
+		fmt.Println(array, valuesSwapped)
 	}
+
+}
+
+func main() {
+	array := []int{2, 3, 6, 8, 1, 7, 9, 4, 5}
+	fmt.Println("Array Before Sorting : ", array)
+	BubbleSort(array[:])
+	fmt.Println("\nArray After Sorting : ", array)
 }
