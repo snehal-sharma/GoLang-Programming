@@ -15,9 +15,7 @@ func Reverse(arr []int) {
 	right := len(arr) - 1
 
 	for left < right {
-		temp := arr[left]
-		arr[left] = arr[right]
-		arr[right] = temp
+		arr[left], arr[right] = arr[right], arr[left]
 		left++
 		right--
 	}
