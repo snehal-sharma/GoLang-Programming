@@ -1,5 +1,5 @@
-* Defer
-  Go's defer statement schedules a function call (the deferred function) to be run immediately before the function executing the defer returns.
+# Defer
+* Go's defer statement schedules a function call (the deferred function) to be run immediately before the function executing the defer returns.
   The arguments to the deferred function (which include the receiver if the function is a method) are evaluated when the defer executes, not when the call executes.
 ```
 for i := 0; i < 5; i++ {
@@ -7,8 +7,8 @@ for i := 0; i < 5; i++ {
 }
 ```
 
-* Output
-Deferred functions are executed in LIFO order, so this code will cause 4 3 2 1 0 to be printed when the function returns.
+# Output
+* Deferred functions are executed in LIFO order, so this code will cause 4 3 2 1 0 to be printed when the function returns.
 
 ```func trace(s string) string {
     fmt.Println("entering:", s)
@@ -34,7 +34,7 @@ func main() {
     b()
 }```
 
-* Output
+# Output
 ```
 entering: b
 in b
