@@ -10,7 +10,8 @@ for i := 0; i < 5; i++ {
 **Output**
 * Deferred functions are executed in LIFO order, so this code will cause 4 3 2 1 0 to be printed when the function returns.
 
-```func trace(s string) string {
+```
+func trace(s string) string {
     fmt.Println("entering:", s)
     return s
 }
@@ -32,13 +33,16 @@ func b() {
 
 func main() {
     b()
-}```
+}
+```
 
-# Output
+**Output**
 
-```entering: b
+```
+entering: b
 in b
 entering: a
 in a
 leaving: a
-leaving: b```
+leaving: b
+```
