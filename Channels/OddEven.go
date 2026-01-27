@@ -7,9 +7,9 @@ import (
 
 func main() {
 	// Channels for signaling between odd and even goroutines
-	oddChan := make(chan struct{})  // Use struct{} for empty signal
+	oddChan := make(chan struct{}) // Use struct{} for empty signal
 	evenChan := make(chan struct{})
-	
+
 	var wg sync.WaitGroup
 	wg.Add(2)
 	const limit = 10
@@ -35,6 +35,7 @@ func main() {
 			fmt.Println("Even:", i)
 			oddChan <- struct{}{} // Signal odd to print
 		}
+		close(oddChan)
 	}()
 
 	// Initial signal to start the odd goroutine
@@ -42,4 +43,5 @@ func main() {
 
 	// Wait for both goroutines to finish
 	wg.Wait()
+
 }
