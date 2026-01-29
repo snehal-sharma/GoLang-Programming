@@ -12,7 +12,7 @@ func BinarySearchLastOccurrence(arr []int, low, high, data int) int {
 		if (mid == high && arr[mid] == data) || (arr[mid+1] > data && arr[mid] == data) {
 			return mid
 		} else if arr[mid] <= data {
-			fmt.Println("\nArray : ", arr[mid+1:])
+			fmt.Println("\nArray : ", arr[mid+1:high])
 			return BinarySearchLastOccurrence(arr, mid+1, high, data)
 		} else {
 			fmt.Println("\nArray : ", arr[low:mid])
