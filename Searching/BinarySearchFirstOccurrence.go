@@ -1,3 +1,4 @@
+//Since we need the first occurrence of the data we check arr[mid] >= data first because if the data itself is at a[mid] we want to search in the first half of the array
 
 package main
 
@@ -14,7 +15,7 @@ func BinarySearchFirstOccurrence(arr []int, low, high, data int) int {
 			fmt.Println("\nArray : ", arr[low:mid])
 			return BinarySearchFirstOccurrence(arr, low, mid-1, data)
 		} else {
-			fmt.Println("\nArray : ", arr[mid+1:])
+			fmt.Println("\nArray : ", arr[mid+1:high])
 			return BinarySearchFirstOccurrence(arr, mid+1, high, data)
 		}
 	}
