@@ -1,3 +1,5 @@
+//Since we need the last occurrence of the data we check arr[mid] <= data first because if the data itself is at a[mid] we want to search in the second half of the array
+
 package main
 
 import "fmt"
