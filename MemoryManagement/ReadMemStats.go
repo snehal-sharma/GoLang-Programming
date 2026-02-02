@@ -10,7 +10,7 @@ import (
 func PrintMemStats(mem *runtime.MemStats, stage string) {
 	runtime.ReadMemStats(mem)
 	fmt.Println("Stage : ", stage)
-	fmt.Printf("\nAllocation on heap :%dK B", mem.HeapAlloc/1024)
+	fmt.Printf("\nAllocation on heap :%d KB", mem.HeapAlloc/1024)
 	fmt.Printf("\nTotal Allocation :%d KB", mem.TotalAlloc/1024)
 	fmt.Printf("\nMemory Allocated on the system :%d KB", mem.Sys/1024)
 	fmt.Println("\nNumber of garbage collection (NumGC)", mem.NumGC)
