@@ -1,5 +1,14 @@
 In Go, everything is passed by value, including slices. However, a slice's value is a header that contains a pointer to an underlying array, its length, and its capacity. 
 
+```
+type sliceHeader struct {
+    Data uintptr // pointer to the underlying array
+    Len  int     // number of elements in the slice
+    Cap  int     // capacity of the slice
+}
+```
+
+
 This leads to a behavior that is often described as "pass by reference" with respect to the elements in the slice: 
 
 * **Modifying existing elements**: If you modify the elements of a slice inside a function (e.g., s[0] = 10), the original slice will see the changes because both the original and the copied slice headers point to the same underlying array.
