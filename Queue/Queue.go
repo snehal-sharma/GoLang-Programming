@@ -6,7 +6,7 @@ import (
 )
 
 type Queue struct {
-	Rear, Front, Data, Capacity int
+	Rear, Front, Capacity int
 	arr                         []int
 }
 
