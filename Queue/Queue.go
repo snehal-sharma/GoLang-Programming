@@ -7,7 +7,7 @@ import (
 
 type Queue struct {
 	Rear, Front, Capacity int
-	arr                         []int
+	arr                   []int
 }
 
 func (myQueue *Queue) IsEmptyQueue() bool {
