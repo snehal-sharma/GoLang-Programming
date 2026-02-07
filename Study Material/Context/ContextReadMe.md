@@ -8,3 +8,12 @@ func a(ctx context.Context) {
 ```
 * Always return the derived context
 * Never store context in structs. Because context is request-scoped and cancelable. Storing it in structs causes lifetime mismatches, broken cancellation, hidden dependencies, and race conditions.
+* context.Context is passed by value, but it contains references to shared internal state like a done channel. Canceling closes that channel, which all copies observe.
+```
+type Context interface {
+	Deadline() (deadline time.Time, ok bool)
+	Done() <-chan struct{}
+	Err() error
+	Value(key any) any
+}
+```
