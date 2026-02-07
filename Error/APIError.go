@@ -21,7 +21,7 @@ func ThrowAPIError() error {
 	return &APIError{
 		code:    404,
 		message: "Not Found",
-		err:     nil,
+		err:     errors.New("Wrapped Error"),
 	}
 }
 func main() {
