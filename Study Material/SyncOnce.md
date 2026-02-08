@@ -1,4 +1,5 @@
 * sync.Once ensures that a function runs exactly once, even if multiple goroutines call Do() concurrently or some goroutines arrive while the function is still running.
+
 **Internal Structure**
 ```
 type Once struct {
