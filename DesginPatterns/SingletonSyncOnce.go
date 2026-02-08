@@ -1,4 +1,7 @@
-
+/*
+We use *SingleInstance because a singleton must represent exactly one shared instance. 
+Returning a pointer avoids copying, preserves shared state across goroutines, and is the idiomatic and safe way to implement a singleton in Go.
+*/
 package main
 
 import (
