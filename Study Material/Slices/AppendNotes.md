@@ -9,6 +9,17 @@ When you call append(s, elements...):
 # Sufficient Capacity (In-place append):
 * If there is enough space, the new elements are copied into the existing underlying array immediately after the current length of the slice.
 * A new slice header (which includes a pointer to the same underlying array, a new length, and the original capacity) is returned. The original underlying array is mutated in the previously unused memory slots. This can cause side effects if other slices share the same backing array and have a "window" into the modified part.
+```
+s := make([]int, 2, 5)
+s = []int{1, 2}
+s = append(s, 3)
+```
+**Internally**
+* Check: len + 1 <= cap 
+* Write element at index len
+* Increment len
+* Return updated slice header
+
 
 # Insufficient Capacity (New allocation):
 * If there isn't enough capacity, Go allocates a new, larger underlying array (typically double the original capacity, with some internal optimizations for growth heuristics).
@@ -21,6 +32,27 @@ When you call append(s, elements...):
 ```
 slice = append(slice, element)
 ```
+
+# Why is it important to save slice header in the same variable.
+```
+package main
+
+import "fmt"
+
+func main() {
+	slice := make([]int, 0, 5)
+	slice = append(slice, 1)
+	_ = append(slice, 2)
+	slice = append(slice, 3)
+	fmt.Println(slice, len(slice), cap(slice))
+
+}
+```
+**Output**
+```
+[1] 1 5
+```
+* Append only modifies the backing array and returns a new slice header. At append(slice, 2) You ignored the returned header, so the slice length never changed. The element does get written into the array — but your slice still thinks its length is 1. Hence at slice = append(slice, 3) is written at len(slice)+1, essentially overwriting 2.
 
 * **Variadic Function**: append is a variadic function, meaning it can take zero or more elements.
 To append a single element: slice = append(slice, 42).
