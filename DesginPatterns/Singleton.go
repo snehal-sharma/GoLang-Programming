@@ -1,5 +1,4 @@
-// You can edit this code!
-// Click here and start typing.
+
 package main
 
 import (
@@ -16,8 +15,8 @@ var single *SingleInstance
 
 var mutex sync.Mutex
 
-func getSingleInstance(wg *sync.WaitGroup) *SingleInstance {
-	defer wg.Done()
+func getSingleInstance() *SingleInstance {
+
 	if single == nil {
 		mutex.Lock()
 		defer mutex.Unlock()
@@ -35,7 +34,10 @@ func main() {
 	var wg sync.WaitGroup
 	for i := 0; i < 10; i++ {
 		wg.Add(1)
-		go getSingleInstance(&wg)
+		go func() {
+			defer wg.Done()
+			getSingleInstance()
+		}()
 	}
 
 	wg.Wait()
