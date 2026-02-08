@@ -18,9 +18,9 @@ if atomic.LoadUint32(&o.done) == 1 {
 	return
 }
 ```
-* If done==0
 
 **Slow Path**
+* If done==0
 ```
 o.m.Lock()
 defer o.m.Unlock()
