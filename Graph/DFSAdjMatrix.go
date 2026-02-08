@@ -1,4 +1,3 @@
-
 package main
 
 import "fmt"
@@ -16,6 +15,10 @@ func main() {
 }
 
 func dfs(node int, matrix [][]int, visited map[int]bool) {
+
+	if visited[node] == true {
+		return
+	}
 
 	visited[node] = true
 
