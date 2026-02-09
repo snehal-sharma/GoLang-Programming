@@ -5,3 +5,5 @@
 
 **GMP Model**
 * https://leapcell.io/blog/unveiling-go-s-scheduler-secrets-the-g-m-p-model-in-action
+
+* Go can handle hundreds of thousands or even millions of goroutines, as they are lightweight and managed efficiently by the Go runtime. However, the practical limit is determined by the available system resources, primarily memory and CPU, and the nature of the tasks the goroutines are performing. 
