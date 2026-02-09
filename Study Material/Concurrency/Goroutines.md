@@ -7,3 +7,11 @@
 * https://leapcell.io/blog/unveiling-go-s-scheduler-secrets-the-g-m-p-model-in-action
 
 * Go can handle hundreds of thousands or even millions of goroutines, as they are lightweight and managed efficiently by the Go runtime. However, the practical limit is determined by the available system resources, primarily memory and CPU, and the nature of the tasks the goroutines are performing. 
+
+* An unbuffered channel in Go is a synchronization point with zero capacity that requires both a sender and a receiver to be ready at the same time for communication to succeed. UseCase:-Signaling between goroutines,Ensuring one step finishes before the next,Worker start/stop signals.
+* Sending to an unbuffered channel without recieving it causes a deadlock. Receiving from a channel without sending anything in returns a zero value. Sending/Receiving on a nil channel blocks forever(deadlock).
+
+* A buffered channel in Go is a channel with a fixed capacity to store a predetermined number of values without requiring an immediate corresponding receive operation. This allows for a degree of asynchronous communication between goroutines, decoupling the sender and receiver's timing. UserCase:-Worker pools, Job queues, Rate limiting, Logging pipelines.
+* Sending to a buffered channel when it is full causes a deadlock. Receiving from an empty channel returns 0.
+
+* 
