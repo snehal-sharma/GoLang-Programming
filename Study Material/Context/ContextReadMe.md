@@ -7,7 +7,7 @@ func a(ctx context.Context) {
 }
 ```
 * Always return the derived context
-* Never store context in structs. Because context is request-scoped and cancelable. Storing it in structs causes lifetime mismatches, broken cancellation, hidden dependencies, and race conditions.
+* Never store context in structs. Because context is request-scoped and cancelable. Storing it in structs causes lifetime mismatches, broken cancellation, hidden dependencies, and race conditions.The struct may live longer than the request. The context may already be cancelled or expired. Future calls accidentally reuse a dead context.Instead Context should flow from the caller to callee. Concurrency: One request cancels the context Other goroutines unexpectedly stop. Race conditions when contexts are replaced
 * context.Context is passed by value, but it contains references to shared internal state like a done channel. Canceling closes that channel, which all copies observe.
 ```
 type Context interface {
