@@ -14,4 +14,4 @@
 * A buffered channel in Go is a channel with a fixed capacity to store a predetermined number of values without requiring an immediate corresponding receive operation. This allows for a degree of asynchronous communication between goroutines, decoupling the sender and receiver's timing. UserCase:-Worker pools, Job queues, Rate limiting, Logging pipelines.
 * Sending to a buffered channel when it is full causes a deadlock. Receiving from an empty channel returns 0.
 
-* 
+
