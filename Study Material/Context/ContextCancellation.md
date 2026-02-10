@@ -1,3 +1,31 @@
+# How does context.WithTimeout work
+```
+ctx, cancel := context.WithTimeout(parent, d)
+Internally Equivalent to 
+context.WithDeadline(parent, time.Now().Add(d))
+```
+* Gets automatically canceled after duration d. Can also be manually canceled by calling cancel().
+```
+type timerCtx struct {
+    cancelCtx          // embeds cancelCtx
+    timer *time.Timer
+    deadline time.Time
+}
+```
+* Deadline is Calculated and stored in ctx.Deadline(). The context is canceled. Error is set to DeadlineExceeded. ctx.Done() is closed
+```
+deadline := time.Now().Add(timeout)
+ctx.Deadline()
+```
+* A time.AfterFunc (or time.Timer) is set up. 
+```
+timer = time.AfterFunc(timeout, func() {
+    ctx.cancel(true, context.DeadlineExceeded)
+})
+
+```
+# How does Context Cancellation work internally.
+
 ```
 ctx1 := context.Background()
 ctx2, cancel := context.WithCancel(ctx1)
