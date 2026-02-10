@@ -1,4 +1,4 @@
-The append function in Go is a built-in function used to add elements to the end of a slice. It handles the dynamic resizing of the underlying array as needed and always returns a new slice, which must be stored in a variable, typically the original slice variable itself. 
+The append function in Go is a built-in function used to add elements to the end of a slice. It handles the dynamic resizing of the underlying array as needed and always returns a new slice header, which must be stored in a variable, typically the original slice variable itself. 
 
 **How append Works**
 * Basics : Length = number of elements the slice currently exposes. Capacity = how far the slice can grow before reallocation.
