@@ -20,10 +20,12 @@ func main() {
 		for i := 1; i <= limit; i += 2 {
 			<-oddChan // Wait for signal to print odd
 			fmt.Println("Odd:", i)
-			evenChan <- struct{}{} // Signal even to print
+			if i+1 <= limit {
+				evenChan <- struct{}{} // Signal even to print
+			}
 		}
-		// Close even channel to signal the end of sequence
 		close(evenChan)
+
 	}()
 
 	// Even number goroutine
@@ -33,12 +35,14 @@ func main() {
 		for i := 2; i <= limit; i += 2 {
 			<-evenChan // Wait for signal to print even
 			fmt.Println("Even:", i)
-			oddChan <- struct{}{} // Signal odd to print
+			if i+1 <= limit {
+				oddChan <- struct{}{} // Signal odd to print
+			}
 		}
 		close(oddChan)
+
 	}()
 
-	// Initial signal to start the odd goroutine
 	oddChan <- struct{}{}
 
 	// Wait for both goroutines to finish
