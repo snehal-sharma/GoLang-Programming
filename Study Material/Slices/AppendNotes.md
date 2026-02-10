@@ -51,7 +51,7 @@ func main() {
 ```
 **Output**
 ```
-[1] 1 5
+[1 3] 2 5
 ```
 * Append only modifies the backing array and returns a new slice header. At append(slice, 2) You ignored the returned header, so the slice length never changed. The element does get written into the array — but your slice still thinks its length is 1. Hence at slice = append(slice, 3) is written at len(slice)+1, essentially overwriting 2.
 
