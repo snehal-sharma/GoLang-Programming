@@ -2,7 +2,8 @@
 * https://medium.com/deep-golang/top-golang-interview-questions-related-to-goroutines-part-1-dff76c66b086
 * https://medium.com/deep-golang/top-golang-interview-questions-related-to-goroutines-part-2-fd3afa7e8268
 * https://gobyexample.com/waitgroups
-* https://chatgpt.com/share/698cb195-59d4-8003-8f06-d39f791d1e0c
+* https://chatgpt.com/share/698cb195-59d4-8003-8f06-d39f791d1e0c (Channel Internals)
+* https://chatgpt.com/share/698cb4c2-6e78-8003-8139-8f3b8fc3de8e (WaitGroup Internals)
 
 # GoLang SOLID Principles
 * https://medium.com/@vishal/understanding-solid-principles-in-golang-a-guide-with-examples-f887172782a3
