@@ -16,7 +16,7 @@ func getItem(id int) error {
 
 func main() {
 	err := getItem(0)
-	if err == ErrorNotFound {
+	if errors.Is(err, ErrorNotFound) {
 		fmt.Println(err)
 	}
 }
